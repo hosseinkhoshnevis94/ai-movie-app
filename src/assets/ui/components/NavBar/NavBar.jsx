@@ -18,7 +18,7 @@ import { useTheme } from '@mui/material/styles';
 import LoginIcon from '@mui/icons-material/Login';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
-import { Drawer, useMediaQuery } from '@mui/material';
+import { Container, Drawer, useMediaQuery } from '@mui/material';
 import SideBar from '../SideBar/SideBar';
 
 export default function NavBar() {
@@ -128,9 +128,12 @@ export default function NavBar() {
   );
 
   return (
-    <Box >
+    <Box>
       <AppBar position="static" sx={{backgroundColor:`${theme.mode=='dark' ? 'green' : 'gray'}`}}>
-        <Toolbar>
+        <Container maxWidth='xl'>
+
+      
+        <Toolbar sx={{display:'flex',justifyContent:"space-between",alignItems:"center" , height:'80px'}}>
          {isMobile && <IconButton
             size="large"
             edge="start"
@@ -140,6 +143,10 @@ export default function NavBar() {
           >
             <MenuIcon onClick={toggleDrawer} />
           </IconButton>}
+          <Box sx={{ display:'flex',justifyContent:'center',alignItems:'end',gap:2 ,display: { xs: 'none', md: 'flex' }}} >
+          <LogoImage src="/logo.png" alt="movie"   />
+          <Typography variant='caption' fontFamily={'Chilanka'}>AI Powered !</Typography> 
+            </Box>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -149,10 +156,6 @@ export default function NavBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box sx={{ flexGrow: 1,display:'flex',justifyContent:'center',alignItems:'end',gap:2 ,display: { xs: 'none', md: 'flex' }}} >
-          <LogoImage src="/logo.png" alt="movie"   />
-          <Typography variant='caption' fontFamily={'Chilanka'}>AI Powered !</Typography> 
-            </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
            { isAuthenticated ? <>
 
@@ -219,6 +222,7 @@ export default function NavBar() {
             </IconButton>
           </Box>
         </Toolbar>
+        </Container>
       </AppBar>
 
       {renderMobileMenu}

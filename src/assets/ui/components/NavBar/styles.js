@@ -4,6 +4,8 @@ import { AppBar } from '@mui/material';
 
 export const Search = styled('div')(({ theme }) => ({
     position: 'relative',
+    flexGrow:"0.4",
+    display:"flex",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
@@ -33,14 +35,14 @@ export const Search = styled('div')(({ theme }) => ({
   
   export const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
+    width: '100%',
     '& .MuiInputBase-input': {
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
-      width: '100%',
       [theme.breakpoints.up('md')]: {
-        width: '20ch',
+        width: '100%',
       },
     },
   }));
