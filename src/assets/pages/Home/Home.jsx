@@ -9,7 +9,10 @@ const Home = () => {
     <div>
       
       <GenreList></GenreList>
-      <MovieList title={'New Movies:'}></MovieList>
+      <MovieList filter={'now-playing'} title={'Now Playing'}></MovieList>
+      <MovieList filter={'popular'} title={'Popular'}></MovieList>
+      <MovieList filter={'top-rated'} title={'top Rated'}></MovieList>
+      <MovieList filter={'upcoming'} title={'Upcoming'}></MovieList>
       
     </div>
   )

@@ -8,6 +8,7 @@ import { selectGenre } from '../../../../../features/genreSlice'
 
 
 const GenreList = () => {
+  const filter = 'popular'
   const dispatch = useDispatch()
   const {data,isLoading} = useGetGenresQuery()
   // console.log(genreName);
