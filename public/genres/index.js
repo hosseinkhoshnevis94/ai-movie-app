@@ -17,7 +17,6 @@ import thriller from './thriller.png';
 import tvMovie from './tv movie.png';
 import war from './war.png';
 import western from './western.png';
-
 import popular from './popular.png';
 import topRated from './top rated.png';
 import upcoming from './upcoming.png';

@@ -12,7 +12,7 @@ const Movie = ({movie}) => {
     const {id,title,backdrop_path,poster_path,release_date,vote_average,overview    } = movie
   return (
     
-    <Card >
+    <Card sx={{borderRadius:"50px"}} >
     <Link to={`/movie/${id}`}>
     <CardMedia
      component="img"

@@ -8,11 +8,20 @@ export const  tmdbApi = createApi({
     endpoints:(builder)=>({
         //get movies by [type]
         getMovies: builder.query({
-            query: () => `/movie/popular?api_key=${tmdbApiKey}`
+            query: (genreName) => {
+            //get movies by genre
+            if(genreName){
+            return `/discover/movie?with_genres=${genreName}&api_key=${tmdbApiKey}` 
+             } 
+             //get popular movies 
+            return `/movie/popular?api_key=${tmdbApiKey}`;
+        }
         }),
         //get genres
         getGenres : builder.query({
-            query: () => `/genre/movie/list?api_key=${tmdbApiKey}`
+            query: () => {
+             return `/genre/movie/list?api_key=${tmdbApiKey}`
+        }
         })
     })
 })
