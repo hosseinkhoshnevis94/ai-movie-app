@@ -27,7 +27,7 @@ const MovieList = ({title,filter}) => {
 
  return (
     <>
-    <Grid container spacing={{ xs: 1, md: 1 }} sx={{marginTop:'40px',paddingBottom:'20px'}} >
+    <Grid container spacing={{ xs: 1, md: 1 }} sx={{width:'100%',marginTop:'40px',paddingBottom:'20px',paddingX:'15px'}} >
       <Grid xs={12} sx={{display:'flex',alignItems:"center",justifyContent:'space-between'}} >
        <Typography variant="h2" color="initial" sx={{fontSize:"20px",fontWeight:'bold',marginBottom:'20px', color:"black",paddingLeft:"6px",letterSpacing:"5px"}}>{title}</Typography>
        <Link>

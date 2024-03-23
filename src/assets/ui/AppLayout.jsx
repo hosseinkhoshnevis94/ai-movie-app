@@ -1,16 +1,22 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Container } from '@mui/material'
+import { Container, Grid } from '@mui/material'
 import NavBar from './NavBar/NavBar'
 import Footer from './Footer/Footer'
+import SideBar from './SideBar/SideBar'
 const AppLayout = () => {
   return (
     <div>
          <NavBar></NavBar>
-         <Container maxWidth="xl" sx={{paddingY:'40px'}}>
-        <Outlet></Outlet>
-         </Container>
-        <Footer></Footer>
+         <Grid container  >
+         <Grid xs={2} md={2}>
+           <SideBar></SideBar>
+          </Grid>
+          <Grid xs={10} md={10}>
+         <Outlet></Outlet>
+         </Grid>
+         </Grid>
+         <Footer></Footer>
     </div>
   )
 }
