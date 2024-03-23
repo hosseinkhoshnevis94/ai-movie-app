@@ -3,8 +3,12 @@ import InputBase from '@mui/material/InputBase';
 import { AppBar } from '@mui/material';
 
 export const Search = styled('div')(({ theme }) => ({
+   dispaly:'flex',
+   alignItems:'center',
+   padding:'0px 10px',
     position: 'relative',
     flexGrow:"0.4",
+    color:'black',
     display:"flex",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -20,15 +24,7 @@ export const Search = styled('div')(({ theme }) => ({
     },
   }));
 
-  export const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
+
   export const LogoImage = styled('img')(({ theme }) => ({
     height: '50px',
   }));

@@ -8,7 +8,7 @@ export const  tmdbApi = createApi({
     endpoints:(builder)=>({
         //get movies by [type]
         getMovies: builder.query({
-            query: ({genre,category}) => {
+            query: ({genre,category,searchQuery}) => {
             //get movies by genre
             if(genre.id && genre.id!==0 ){
             return `/discover/movie?with_genres=${genre.id}&api_key=${tmdbApiKey}` 
@@ -23,7 +23,11 @@ export const  tmdbApi = createApi({
              } 
              //get upcoming movies 
             if(category=='upcoming'){
-            return `/movie/upcoming?api_key=${tmdbApiKey}` 
+            return `/movie/upcoming?api_key=${tmdbApiKey}`
+             } 
+             //get movies by search 
+            if(searchQuery){
+            return  `/search/movie?query=${searchQuery}&api_key=${tmdbApiKey}` 
              } 
              //get popular movies 
 

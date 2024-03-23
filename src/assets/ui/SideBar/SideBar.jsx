@@ -25,7 +25,7 @@ const SideBar = () => {
  if(isFetching) return <Spinner></Spinner>
   return (
     <>
-     <Toolbar/>
+
         <Box sx={{ width:'100%',flexDirection:'column', display:'flex',alignItems:'center',justifyContent:'center',gap:'5px', fontSize:"15px",marginBottom:'20px', color:"black"}}>
        <Typography  onClick={()=>{dispatch(selectCategory('popular')),dispatch(selectGenre(0)),navigate('/')}} sx={{width:"150px",display:'flex',flexDirection:"column",justifyContent:'space-between',cursor:'pointer',alignItems:"center",padding:'16px',borderRadius:'10px',backgroundColor:'#D9AFD9',backgroundImage:`${currentCategory=='popular' && "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)"} `,'&:hover':{backgroundColor:'#FBAB7E',backgroundImage:'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)'}}} variant="body1" color="initial" >Popular</Typography>
        <Typography onClick={()=>{dispatch(selectCategory('upcoming')),dispatch(selectGenre(0))}} sx={{width:"150px",display:'flex',flexDirection:"column",justifyContent:'space-between',cursor:'pointer',alignItems:"center",padding:'16px',borderRadius:'10px',backgroundColor:'#D9AFD9',backgroundImage:`${currentCategory=='upcoming' && "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)"} `,'&:hover':{backgroundColor:'#FBAB7E',backgroundImage:'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)'}}} variant="body1" color="initial" >Upcoming</Typography>

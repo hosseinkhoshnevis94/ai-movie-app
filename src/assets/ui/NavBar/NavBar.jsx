@@ -13,13 +13,16 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Search,StyledInputBase,SearchIconWrapper,StyledAppBar, LogoImage } from './styles';
+import { Search,StyledInputBase,StyledAppBar, LogoImage } from './styles';
 import { useTheme } from '@mui/material/styles';
 import LoginIcon from '@mui/icons-material/Login';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import { Container, Drawer, useMediaQuery } from '@mui/material';
 import SideBar from '../SideBar/SideBar';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { searchMovie } from '../../../features/searchSlice';
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -31,7 +34,12 @@ export default function NavBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const isAuthenticated = true
-    
+  const dispatch = useDispatch()
+  
+  const handleSearch = () =>{
+    console.log(searchQuery)
+    dispatch(searchMovie(searchQuery))
+  }
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -142,18 +150,18 @@ export default function NavBar() {
           >
             <MenuIcon onClick={toggleDrawer} />
           </IconButton>}
+          <Link to={'/'}>
           <Box sx={{ display:'flex',justifyContent:'center',alignItems:'end',gap:2 ,display: { xs: 'none', md: 'flex' }}} >
           <LogoImage src="/logo.png" alt="movie"   />
           <Typography variant='caption' fontFamily={'Chilanka'}>AI Powered !</Typography> 
             </Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
+          </Link>
+          <Search >
+              <SearchIcon onClick={handleSearch} sx={{height:'100%',cursor:"pointer"}} /> 
             <StyledInputBase
               placeholder="Search…"
               value={searchQuery}
-              onChange={(e)=>{setSearchQuery(e.target.value) ,console.log(searchQuery)} }
+              onChange={(e)=>setSearchQuery(e.target.value)}
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>

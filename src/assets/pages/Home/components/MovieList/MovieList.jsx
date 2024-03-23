@@ -6,12 +6,14 @@ import { Box, Typography } from '@mui/material';
 import MovieSkeleton from '../../../../ui/MovieSkeleton/MovieSkeleton';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { StarRateTwoTone } from '@mui/icons-material';
 
 const MovieList = ({title}) => {
   const [page,sePage] = useState(1)
   const genre = useSelector(state=>state.genre.genre)
+  const searchQuery = useSelector(state=>state.search.query)
   const category = useSelector(state=>state.category.category)
-  const {data,error,isFetching} = useGetMoviesQuery({genre,category})
+  const {data,error,isFetching} = useGetMoviesQuery({genre,category,searchQuery})
 
   if(isFetching ) return <Grid container spacing={{ xs: 2, md: 3 }}  sx={{width:'100%',marginTop:'40px',paddingBottom:'20px',paddingX:'15px'}}>
   {Array(20).fill('1').map((_, index) => (
