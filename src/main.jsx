@@ -7,7 +7,16 @@ import { Provider } from 'react-redux'
 import store from './store.js'
 
 
-const theme = createTheme({})
+const theme = createTheme({
+  palette:{
+    background:{
+      categoryButtonColor: "red",
+      categoryButtonGradiant: "red",
+      categoryButtonHover: "red",
+
+    }
+  }
+})
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 

@@ -8,11 +8,11 @@ const AppLayout = () => {
   return (
     <div>
          <NavBar></NavBar>
-         <Grid container  >
-         <Grid xs={2} md={2}>
+         <Grid container maxWidth={'xl'} sx={{margin:'auto'}}>
+         <Grid xs={0} md={2} sx={{display:{xs:'none',sm:'block'}}} >
            <SideBar></SideBar>
           </Grid>
-          <Grid xs={10} md={10}>
+          <Grid xs={12} md={10}>
          <Outlet></Outlet>
          </Grid>
          </Grid>

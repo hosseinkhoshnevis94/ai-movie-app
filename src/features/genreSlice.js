@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    genre:''
+    genre:{}
 }
 
 
@@ -10,7 +10,7 @@ export const  genreSlice = createSlice({
     initialState,
     reducers:{
         selectGenre:(state,action) =>{
-            //payload is genres name
+            //payload is genres object includ name and id property
             state.genre=action.payload
         }
     }

@@ -8,27 +8,27 @@ export const  tmdbApi = createApi({
     endpoints:(builder)=>({
         //get movies by [type]
         getMovies: builder.query({
-            query: ({genreName,filter}) => {
+            query: ({genre,category}) => {
             //get movies by genre
-            if(genreName){
-            return `/discover/movie?with_genres=${genreName}&api_key=${tmdbApiKey}` 
+            if(genre.id && genre.id!==0 ){
+            return `/discover/movie?with_genres=${genre.id}&api_key=${tmdbApiKey}` 
              } 
              //get now-playing movies 
-            if(filter=='now-playing'){
+            if(category=='now-playing'){
             return `/movie/now_playing?api_key=${tmdbApiKey}` 
              } 
              //get top-rated movies 
-            if(filter=='top-rated'){
+            if(category=='top-rated'){
             return `/movie/top_rated?api_key=${tmdbApiKey}` 
              } 
              //get upcoming movies 
-            if(filter=='upcoming'){
+            if(category=='upcoming'){
             return `/movie/upcoming?api_key=${tmdbApiKey}` 
              } 
              //get popular movies 
-            if(filter=='popular'){
-               return `/movie/popular?api_key=${tmdbApiKey}`;
-             } 
+
+            return `/movie/popular?api_key=${tmdbApiKey}`;
+             
         }
         }),
         //get genres

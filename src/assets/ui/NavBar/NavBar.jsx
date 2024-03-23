@@ -129,12 +129,10 @@ export default function NavBar() {
   );
 
   return (
-    <Box>
-      <AppBar position="static" sx={{backgroundColor:`${theme.mode=='dark' ? 'green' : 'gray'}`}}>
-        <Container maxWidth='xl'>
-
-      
-        <Toolbar sx={{display:'flex',justifyContent:"space-between",alignItems:"center" , height:'80px'}}>
+    <Box sx={{position:'sticky',top:'10px',width:{ xs: '90%', md: '65%' },margin:'auto',zIndex:"999999",}}>
+      <AppBar position="static" sx={{backgroundColor:'rgb(182 113 245 / 70%)',backdropFilter:'blur(9px);',borderRadius:'15px'}}>
+        <Container maxWidth='xl'  >
+        <Toolbar sx={{display:'flex',justifyContent:"space-between",alignItems:"center" , height:'80px',}}>
          {isMobile && <IconButton
             size="large"
             edge="start"
