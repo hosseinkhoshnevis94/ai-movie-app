@@ -24,6 +24,7 @@ import SideBar from '../SideBar/SideBar';
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [searchQuery,setSearchQuery] = useState('')
   const [openNavBar,setOpenNavBar] = useState(true)
   const theme = useTheme()
   const isMobile = useMediaQuery('(max-width:600px)')
@@ -153,6 +154,8 @@ export default function NavBar() {
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
+              value={searchQuery}
+              onChange={(e)=>{setSearchQuery(e.target.value) ,console.log(searchQuery)} }
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
