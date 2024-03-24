@@ -8,7 +8,29 @@
     opacity: 0.5;
     z-index: -99;
 }
+.noImageBackdrop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.5;
+    z-index: -99;
+    background-color: #8EC5FC;
+   background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+
+}
 .posterImage{
     width: 80%;
     border-radius: 20px;
+}
+.noImagePoster{
+    width: 80%;
+    height: 450px;
+    border-radius: 20px;
+    background-color: #4158D0;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+    
 }

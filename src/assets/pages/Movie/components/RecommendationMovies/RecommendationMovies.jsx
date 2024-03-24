@@ -3,11 +3,10 @@ import React from 'react'
 import Movie from '../../../Home/components/Movie/Movie';
 
 const RecommendationMovies = ({movies,isFetching}) => {
-  console.log(movies);
   return (
     <Grid container columnSpacing={1} rowSpacing={2} sx={{marginTop:'55px'}}>
       <Grid item xs={12}>
-      <Typography gutterBottom variant="h6" component="h4">Recommendation movies:</Typography>
+      <Typography gutterBottom variant="h6" component="h4">Recommended movies:</Typography>
       </Grid>
     {movies.map((movie,i)=>
       <Grid item xs={2}>

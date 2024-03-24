@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function useScrollToTopOnLoad() {
+function useScrollToTopOnLoad(dep) {
   useEffect(() => {
     const handleScrollToTop = () => {
       window.scrollTo({
@@ -13,7 +13,7 @@ function useScrollToTopOnLoad() {
     handleScrollToTop();
 
     // Cleanup function (no event listener needed)
-  }, []);
+  }, [dep]);
 
   // No need to return anything from this hook
 }

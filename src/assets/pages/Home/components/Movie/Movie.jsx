@@ -9,15 +9,15 @@ import { Box, Fade, Grow, Rating, Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Movie = ({movie}) => {
-    const {id,title,backdrop_path,poster_path,release_date,vote_average,overview    } = movie
+    const {id,title,poster_path,release_date,vote_average} = movie
   return (
     <Fade in timeout={1000} >
     <Card sx={{borderRadius:"30px"}} >
     <Link to={`/movie/${id}`}>
     <CardMedia
      component="img"
-     height="350"
-     image={`https://image.tmdb.org/t/p/w342/${poster_path}`}
+     height="320"
+     image={poster_path && `https://image.tmdb.org/t/p/w342/${poster_path}`}
      alt={title}
      />
      </Link>
@@ -34,9 +34,6 @@ const Movie = ({movie}) => {
       <Rating  name="read-only" value={vote_average/2} readOnly precision={0.5} size="small" />
       </Box>
       </Tooltip>
-      {/* <Typography variant="body2" color="text.secondary" sx={{marginTop:"8px",whiteSpace:'wrap'}}>
-        overview: {overview.length > 150 ? overview.slice(0,150) : overview}...
-      </Typography> */}
     </CardContent>
     {/* <CardActions>
       <Button size="small">Share</Button>
