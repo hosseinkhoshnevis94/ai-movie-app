@@ -1,19 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid';
 import Movie from '../Movie/Movie';
 import {  useGetMoviesQuery } from '../../../../services/tmdb';
-import { Box, Typography } from '@mui/material';
+import { Box, Pagination, Typography } from '@mui/material';
 import MovieSkeleton from '../../../../ui/MovieSkeleton/MovieSkeleton';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { StarRateTwoTone } from '@mui/icons-material';
+import useScrollToTopOnLoad from '../../../../ui/ScrollToTop/useScrollToTopOnLoad';
 
-const MovieList = ({title}) => {
-  const [page,sePage] = useState(1)
+const MovieList = () => {
+  const [page,setPage] = useState(1)
   const genre = useSelector(state=>state.genre.genre)
   const searchQuery = useSelector(state=>state.search.query)
   const category = useSelector(state=>state.category.category)
-  const {data,error,isFetching} = useGetMoviesQuery({genre,category,searchQuery})
+  const {data:movies,error,isFetching} = useGetMoviesQuery({genre,category,searchQuery,page})
+  useScrollToTopOnLoad([page,genre,category,searchQuery],0)
+   console.log(movies);
+  
+   
+  const handleChangePage = (event, value) => {
+    setPage(value);
+  };
+  // Reset page to 1 when searchQuery changes
+  useEffect(() => {
+    setPage(1); 
+  }, [searchQuery]);
+
 
   if(isFetching ) return <Grid container spacing={{ xs: 2, md: 3 }}  sx={{width:'100%',marginTop:'40px',paddingBottom:'20px',paddingX:'15px'}}>
   {Array(20).fill('1').map((_, index) => (
@@ -31,11 +44,17 @@ const MovieList = ({title}) => {
  return (
     <>
     <Grid container spacing={{ xs: 1, md: 1 }} sx={{width:'100%',paddingBottom:'20px',paddingX:'15px'}} >
-      {data.results?.map((movie, index) => (
+     {/* {movies.total_results>0 && <Grid item xs={12} >
+      <Typography variant="body2" >{movies.total_results} results</Typography>
+      </Grid>} */}
+      {movies?.results?.map((movie, index) => (
         <Grid item key={movie.id} xs={12} sm={4} md={3} >
         <Movie movie={movie} isFetching={isFetching} ></Movie>
         </Grid>
       ))}
+      <Grid item xs={12} sx={{display:'flex',alignItems:'center',justifyContent:'center',marginTop:'30px'}}>
+      <Pagination color="primary" page={page}  count={movies?.total_pages} onChange={handleChangePage} variant="outlined" shape="rounded" />
+      </Grid>
      </Grid>
       </>
   )

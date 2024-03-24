@@ -4,6 +4,8 @@ import { useGetActorQuery, useGetMoviesByActorIdQuery, useGetRecommendationMovie
 import { Grid } from '@mui/material'
 import ActorDetails from './components/ActorDetails/ActorDetails'
 import RecommendationMovies from '../Movie/components/RecommendationMovies/RecommendationMovies'
+import styles from './styles.module.css'
+import ActorMovies from './components/ActorMovies/ActorMovies'
 
 const ActorPage = () => {
   const [page,setPage] =useState(1)
@@ -17,9 +19,9 @@ const ActorPage = () => {
 
   if(isFetching) return <div>is loading...</div>
   return (
-    <Grid container maxWidth={'xl'} sx={{padding:'0px 40px'}} >
+    <Grid container maxWidth={'xl'} className={styles.actorPageContainer}  >
     <ActorDetails actorData={data}></ActorDetails>
-    {r && <RecommendationMovies movies={r} ></RecommendationMovies>}
+    {r && <ActorMovies movies={r} actorName={data?.name} ></ActorMovies>}
     </Grid>
   )
 }

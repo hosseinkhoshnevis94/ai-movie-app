@@ -6,31 +6,31 @@ export const  tmdbApi = createApi({
     reducerPath:'tmdbApi',
     baseQuery:fetchBaseQuery({baseUrl:'https://api.themoviedb.org/3'}),
     endpoints:(builder)=>({
-        //get movies by [type]
+        //get moviesby [type]
         getMovies: builder.query({
-            query: ({genre,category,searchQuery}) => {
+            query: ({genre,category,searchQuery,page}) => {
             //get movies by genre
             if(genre.id && genre.id!==0 ){
-            return `/discover/movie?with_genres=${genre.id}&api_key=${tmdbApiKey}` 
+            return `/discover/movie?with_genres=${genre.id}&page=${page}&api_key=${tmdbApiKey}` 
              } 
              //get now-playing movies 
             if(category=='now-playing'){
-            return `/movie/now_playing?api_key=${tmdbApiKey}` 
+            return `/movie/now_playing?page=${page}&api_key=${tmdbApiKey}` 
              } 
              //get top-rated movies 
             if(category=='top-rated'){
-            return `/movie/top_rated?api_key=${tmdbApiKey}` 
+            return `/movie/top_rated?page=${page}&api_key=${tmdbApiKey}` 
              } 
              //get upcoming movies 
             if(category=='upcoming'){
-            return `/movie/upcoming?api_key=${tmdbApiKey}`
+            return `/movie/upcoming?page=${page}&api_key=${tmdbApiKey}`
              } 
              //get movies by search 
             if(searchQuery){
-            return  `/search/movie?query=${searchQuery}&api_key=${tmdbApiKey}` 
+            return  `/search/movie?query=${searchQuery}&page=${page}&api_key=${tmdbApiKey}` 
              } 
              //get popular movies 
-            return `/movie/popular?api_key=${tmdbApiKey}`;
+            return `/movie/popular?page=${page}&api_key=${tmdbApiKey}`;
              
         }
         }),

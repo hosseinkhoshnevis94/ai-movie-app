@@ -20,7 +20,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import { Container, useMediaQuery } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { searchMovie } from '../../../features/searchSlice';
 import CloseIcon from '@mui/icons-material/Close';
 export default function NavBar() {

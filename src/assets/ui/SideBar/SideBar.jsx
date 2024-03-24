@@ -11,6 +11,7 @@ import { selectGenre } from '../../../features/genreSlice';
 import { selectCategory } from '../../../features/categorySlice';
 import Spinner from '../Spinner/Spinner';
 import { useNavigate } from 'react-router-dom';
+import { searchMovie } from '../../../features/searchSlice';
 
 
 const SideBar = () => {
@@ -23,6 +24,7 @@ const SideBar = () => {
   const currentCategory = categorySelector.category
 
  if(isFetching) return <Spinner></Spinner>
+ 
   return (
     <>
 

@@ -12,7 +12,8 @@ export const  searchSlice = createSlice({
     reducers:{
         searchMovie:(state,action) =>{
             //payload is search query
-            state.query=action.payload
+            state.query=action.payload,
+            state.page = 1
             
         }
     }

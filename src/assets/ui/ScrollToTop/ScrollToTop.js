@@ -1,21 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-function useScrollToTopOnLoad(dep) {
+function useScrollToTop(dep, top) {
+  const isFirstLoad = useRef(true);
+
   useEffect(() => {
-    const handleScrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth' // Optional: smooth scrolling animation
-      });
-    };
+    if (!isFirstLoad.current) {
+      const handleScrollToTop = () => {
+        window.scrollTo({
+          top,
+          behavior: 'smooth' // Optional: smooth scrolling animation
+        });
+      };
 
-    // Trigger scroll to top when component mounts
-    handleScrollToTop();
+      // Trigger scroll to top when component mounts
+      handleScrollToTop();
+    } else {
+      // After the first load, set isFirstLoad to false
+      isFirstLoad.current = false;
+    }
 
     // Cleanup function (no event listener needed)
-  }, [dep]);
+  }, [dep, top]);
 
   // No need to return anything from this hook
 }
 
-export default useScrollToTopOnLoad;
+export default useScrollToTop;
