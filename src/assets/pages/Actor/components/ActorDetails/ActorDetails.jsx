@@ -2,6 +2,7 @@ import { Button, Grid, Typography } from '@mui/material'
 import React from 'react'
 import styles from '../../styles.module.css'
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import TextExpander from '../../../../ui/TextExpander/TextExpander';
 
 const ActorDetails = ({actorData}) => {
     const {name,biography,profile_path,birthday,place_of_birth ,deathday,imdb_id} = actorData
@@ -23,7 +24,7 @@ const ActorDetails = ({actorData}) => {
         {deathday && <Typography variant="body2">{new Date(deathday).toDateString() } </Typography>}     
         </Grid>
       <Grid item>
-        <Typography variant="body1">{biography}</Typography>
+        <Typography variant="body1"><TextExpander collapsedNumWords={100}>{biography}</TextExpander></Typography>
       </Grid>
       <Grid item>
       <Button variant="outlined" target={'_blank'} href={`http://imdb.com/name/${imdb_id}`} startIcon={<TheaterComedyIcon />}>IMDB</Button>

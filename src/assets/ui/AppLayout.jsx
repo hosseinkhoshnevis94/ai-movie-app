@@ -7,18 +7,15 @@ import Footer from './Footer/Footer'
 import SideBar from './SideBar/SideBar'
 const AppLayout = () => {
   return (
-    <div>
+    <>
          <NavBar></NavBar>
+        <Container>
          <Grid container maxWidth={'xl'} sx={{margin:'40px auto'}}>
-         {/* <Grid item xs={0} md={2} sx={{display:{xs:'none',sm:'block'}}} >
-           <SideBar></SideBar>
-          </Grid>
-          <Grid item xs={12} md={10}> */}
          <Outlet></Outlet>
-         {/* </Grid> */}
          </Grid>
+         </Container>
          <Footer></Footer>
-    </div>
+           </>
   )
 }
 

@@ -16,7 +16,7 @@ const MovieList = () => {
   const category = useSelector(state=>state.category.category)
   const {data:movies,error,isFetching} = useGetMoviesQuery({genre,category,searchQuery,page})
   useScrollToTopOnLoad([page,genre,category,searchQuery],0)
-   console.log(movies);
+   console.log(searchQuery);
   
    
   const handleChangePage = (event, value) => {

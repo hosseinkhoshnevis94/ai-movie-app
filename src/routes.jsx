@@ -20,11 +20,10 @@ const routes = [
        {
          path:'/profile/:id',
         element: <ProfilePage/>
-       },
+       }
        
      ]
-  
-    },
+    }
   ]
 
 

@@ -9,10 +9,10 @@ import routes from './routes';
 const router = createBrowserRouter(routes)
 const App = () => {
   return (
-    <div>
+    <>
       <CssBaseline/>
       <RouterProvider router={router} />
-    </div>
+    </>
   )
 }
 

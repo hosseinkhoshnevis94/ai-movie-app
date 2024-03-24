@@ -6,7 +6,7 @@ import useScrollToTop from '../../../../ui/ScrollToTop/ScrollToTop';
 
 const ActorMovies = ({ movies, isFetching, actorName }) => {
   const [page, setPage] = useState(1);
-  useScrollToTop(page,600)
+  useScrollToTop(page,500)
   const pageSize = 12;
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
