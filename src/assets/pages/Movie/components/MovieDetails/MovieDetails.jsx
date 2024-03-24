@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Rating, Typography } from '@mui/material'
+import { Avatar, Box, Button, Fade, Rating, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import styles from '../../styles.module.css'
 import Grid from '@mui/material/Grid';
@@ -14,7 +14,6 @@ const MovieDetails = ({movie}) => {
   const {poster_path,backdrop_path,title,overview ,imdb_id,vote_average,tagline,spoken_languages,genres,homepage,release_date,runtime,credits,videos}= movie
   const[openModal,setOpenModal] = useState(false)
   const [isFavorite,setIsFavorite] = useState(false)
-  console.log(movie);
   const addFavorite = () =>{
     setIsFavorite(p=>!p)
   }
@@ -33,7 +32,10 @@ const MovieDetails = ({movie}) => {
      onClose={handleCloseModal}
      sx={{display:'flex',justifyContent:"center",alignItems:"center",zIndex:'999999'}}
 >
-    <iframe autoPlay allow='autoplay' style={{ width: '60vw',height:'80vh', }}  src={`https://www.youtube.com/embed/${videos?.results[1]?.key}`} frameborder="0"></iframe>
+    <Fade in={openModal}>
+    <iframe autoPlay  style={{ width: '60vw',height:'80vh', }}  src={`https://www.youtube.com/embed/${videos?.results[1]?.key}`} frameborder="0"></iframe>
+    </Fade>
+
     </Modal>
     {backdrop_path ? <img className={styles.backdropImage} src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`} alt="" /> :
     <div className={styles.noImageBackdrop}></div>
@@ -46,13 +48,13 @@ const MovieDetails = ({movie}) => {
       </Grid>
       <Grid item  xs={12} md={8} sx={{color:'black'}}>
         <Grid container rowGap={3} >
-          <Grid item xs={9}>
+          <Grid item xs={8}>
           <Typography  variant="h3" >{title}</Typography>
           <Typography  variant="body1"  >{tagline}</Typography>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={4} sx={{textAlign:"right"}}>
           <Rating name="read-only" value={vote_average/2} readOnly precision={0.5}  />
-          <Typography  variant="body1" >{vote_average}/10 | {runtime} min</Typography>
+          <Typography  variant="body1" > {runtime} min | {new Date(release_date).getFullYear()} | {vote_average.toFixed(1)}/10 IMDB </Typography>
           </Grid>
           <Grid  item xs={8}>
           <Typography sx={{fontSize:"20px"}} variant="body1" component={'span'} >Genre: </Typography>
@@ -85,8 +87,8 @@ const MovieDetails = ({movie}) => {
           </Grid>
           <Grid item xs={12}>
             <Box sx={{display:'flex',justifyContent:'flex-start',gap:'15px',alignItems:"center",marginTop:'10px'}}>
-          <Button variant="outlined" href={homepage} target={'_blank'} startIcon={<LanguageIcon />}>Website</Button>
-          <Button variant="outlined" target={'_blank'} href={`http://imdb.com/title/${imdb_id}`} startIcon={<TheaterComedyIcon />}>IMDB</Button>
+          <Button variant="text" href={homepage} target={'_blank'} startIcon={<LanguageIcon />}>Website</Button>
+          <Button variant="text" target={'_blank'} href={`http://imdb.com/title/${imdb_id}`} startIcon={<TheaterComedyIcon />}>IMDB</Button>
             </Box>
 
           </Grid>
