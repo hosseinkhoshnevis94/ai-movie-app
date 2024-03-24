@@ -1,5 +1,5 @@
 import AppLayout from './assets/ui/AppLayout';
-import { Actor, Home, Profile ,Movie} from './assets/pages';
+import { ActorPage, HomePage, ProfilePage ,MoviePage} from './assets/pages';
 
 const routes = [
     {
@@ -7,19 +7,19 @@ const routes = [
      children:[
        {
          path:'/',
-        element: <Home/>
+        element: <HomePage/>
        },
        {
          path:'/movie/:id',
-        element: <Movie/>
+        element: <MoviePage/>
        },
        {
          path:'/actor/:id',
-        element: <Actor/>
+        element: <ActorPage/>
        },
        {
          path:'/profile/:id',
-        element: <Profile/>
+        element: <ProfilePage/>
        },
        
      ]

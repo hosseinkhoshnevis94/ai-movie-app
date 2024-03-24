@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from '@mui/material/Grid';
 import Movie from '../Movie/Movie';
 import {  useGetMoviesQuery } from '../../../../services/tmdb';
 import { Box, Typography } from '@mui/material';
@@ -17,22 +17,22 @@ const MovieList = ({title}) => {
 
   if(isFetching ) return <Grid container spacing={{ xs: 2, md: 3 }}  sx={{width:'100%',marginTop:'40px',paddingBottom:'20px',paddingX:'15px'}}>
   {Array(20).fill('1').map((_, index) => (
-       <Grid key={index} xs={12} sm={4} md={3} >
+       <Grid item key={index} xs={12} sm={4} md={3} >
         <MovieSkeleton></MovieSkeleton>
        </Grid>
      ))}
   </Grid> 
 
-  if(error) return <Grid xs={12} sm={4} md={2} >
+  if(error) return <Grid container xs={12} sm={4} md={2} >
   <div>Error</div>
   </Grid> 
  
 
  return (
     <>
-    <Grid container spacing={{ xs: 1, md: 1 }} sx={{width:'100%',marginTop:'40px',paddingBottom:'20px',paddingX:'15px'}} >
+    <Grid container spacing={{ xs: 1, md: 1 }} sx={{width:'100%',paddingBottom:'20px',paddingX:'15px'}} >
       {data.results?.map((movie, index) => (
-        <Grid key={movie.id} xs={12} sm={4} md={3} >
+        <Grid item key={movie.id} xs={12} sm={4} md={3} >
         <Movie movie={movie} isFetching={isFetching} ></Movie>
         </Grid>
       ))}

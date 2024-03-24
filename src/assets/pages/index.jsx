@@ -1,4 +1,4 @@
-export {default as Home} from './Home/Home'
-export {default as Actor} from './Actor/Actor'
-export {default as Movie} from './Movie/Movie'
-export {default as Profile} from './Profile/Profile'
+export {default as HomePage} from './Home/HomePage'
+export {default as ActorPage} from './Actor/ActorPage'
+export {default as MoviePage} from './Movie/MoviePage'
+export {default as ProfilePage} from './Profile/ProfilePage'

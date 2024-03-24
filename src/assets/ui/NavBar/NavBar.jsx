@@ -13,17 +13,16 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Search,StyledInputBase,StyledAppBar, LogoImage } from './styles';
+import { LogoImage, Search,StyledInputBase } from './styles';
 import { useTheme } from '@mui/material/styles';
 import LoginIcon from '@mui/icons-material/Login';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
-import { Container, Drawer, useMediaQuery } from '@mui/material';
-import SideBar from '../SideBar/SideBar';
-import { Link } from 'react-router-dom';
+import { Container, useMediaQuery } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { searchMovie } from '../../../features/searchSlice';
-
+import CloseIcon from '@mui/icons-material/Close';
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -35,12 +34,21 @@ export default function NavBar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const isAuthenticated = true
   const dispatch = useDispatch()
-  
-  const handleSearch = () =>{
-    console.log(searchQuery)
-    dispatch(searchMovie(searchQuery))
-  }
+  const navigate = useNavigate()
 
+  const handleSearch = () =>{
+    dispatch(searchMovie(searchQuery))
+    navigate('/')
+  }
+  const handleRemoveSearchQuery = () =>{
+    setSearchQuery('')
+  }
+  const handleSearchByKey =(e) =>{
+    if(e.key=='Enter'){
+      navigate('/')
+      dispatch(searchMovie(searchQuery))
+    }
+  }
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -138,7 +146,7 @@ export default function NavBar() {
 
   return (
     <Box sx={{position:'sticky',top:'10px',width:{ xs: '90%', md: '65%' },margin:'auto',zIndex:"999999",}}>
-      <AppBar position="static" sx={{backgroundColor:'rgb(182 113 245 / 70%)',backdropFilter:'blur(9px);',borderRadius:'15px'}}>
+      <AppBar position="static" sx={{backgroundColor:'rgb(207 207 257 / 50%)',backdropFilter:'blur(9px);',borderRadius:'15px'}}>
         <Container maxWidth='xl'  >
         <Toolbar sx={{display:'flex',justifyContent:"space-between",alignItems:"center" , height:'80px',}}>
          {isMobile && <IconButton
@@ -151,7 +159,7 @@ export default function NavBar() {
             <MenuIcon onClick={toggleDrawer} />
           </IconButton>}
           <Link to={'/'}>
-          <Box sx={{ display:'flex',justifyContent:'center',alignItems:'end',gap:2 ,display: { xs: 'none', md: 'flex' }}} >
+          <Box sx={{justifyContent:'center',alignItems:'end',gap:2 ,display: { xs: 'none', md: 'flex' }}} >
           <LogoImage src="/logo.png" alt="movie"   />
           <Typography variant='caption' fontFamily={'Chilanka'}>AI Powered !</Typography> 
             </Box>
@@ -162,8 +170,10 @@ export default function NavBar() {
               placeholder="Search…"
               value={searchQuery}
               onChange={(e)=>setSearchQuery(e.target.value)}
+              onKeyDown={handleSearchByKey}
               inputProps={{ 'aria-label': 'search' }}
             />
+            <CloseIcon onClick={handleRemoveSearchQuery} sx={{height:'100%',cursor:"pointer"}} />
           </Search>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
            { isAuthenticated ? <>
