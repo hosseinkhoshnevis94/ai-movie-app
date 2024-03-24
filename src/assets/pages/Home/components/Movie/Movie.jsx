@@ -22,7 +22,7 @@ const Movie = ({movie}) => {
      />
      </Link>
     <CardContent>
-      <Typography gutterBottom variant="h5" component="div">
+      <Typography sx={{fontSize:'18px'}} gutterBottom variant="h4" component="div">
         {title}
       </Typography>
       <Typography variant="body2" color="text.secondary">
