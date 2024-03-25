@@ -1,17 +1,13 @@
 import { Avatar, Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import React from 'react'
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetGenresQuery } from '../../services/tmdb';
 import genresIcons from '../../../../public/genres/index'
-import { selectGenre } from '../../../features/genreSlice';
-import { selectCategory } from '../../../features/categorySlice';
+
 import Spinner from '../Spinner/Spinner';
 import { useNavigate } from 'react-router-dom';
-import { searchMovie } from '../../../features/searchSlice';
+import { selectCategory } from '../../features/categorySlice';
+import { selectGenre } from '../../features/genreSlice';
 
 
 const SideBar = () => {

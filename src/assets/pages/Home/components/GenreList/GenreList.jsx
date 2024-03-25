@@ -4,8 +4,8 @@ import { Avatar, Box } from '@mui/material'
 import genresIcons from '../../../../../../public/genres'
 import { Link } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
-import { selectGenre } from '../../../../../features/genreSlice'
 import { Cursor } from 'mongoose'
+import { selectGenre } from '../../../../features/genreSlice'
 
 
 const GenreList = () => {

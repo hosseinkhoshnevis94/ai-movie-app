@@ -4,7 +4,7 @@ import { Container } from '@mui/material'
 import Grid from '@mui/material/Grid';
 import NavBar from './NavBar/NavBar'
 import Footer from './Footer/Footer'
-import SideBar from './SideBar/SideBar'
+
 const AppLayout = () => {
   return (
     <>

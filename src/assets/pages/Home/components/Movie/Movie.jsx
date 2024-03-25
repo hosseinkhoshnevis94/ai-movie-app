@@ -30,7 +30,7 @@ const Movie = ({movie}) => {
       </Typography>
       <Tooltip title={`${vote_average.toFixed(1)}/10`} placement="bottom">
       <Box sx={{display:'flex',alignItems:"center",justifyContent:"start",gap:'4px'}}>
-      <Typography variant="body2" color="text.secondary">Score:</Typography>
+      <Typography variant="body2" >Score:</Typography>
       <Rating  name="read-only" value={vote_average/2} readOnly precision={0.5} size="small" />
       </Box>
       </Tooltip>

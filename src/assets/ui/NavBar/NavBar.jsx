@@ -22,7 +22,8 @@ import { Container, useMediaQuery } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
-import { searchMovie } from '../../../features/searchSlice';
+import { searchMovie } from '../../features/searchSlice';
+import { useColorModeContext } from '../../utils/ToggleDarkMode';
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -35,13 +36,14 @@ export default function NavBar() {
   const isAuthenticated = true
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  const colorMode = useColorModeContext()
   const handleSearch = () =>{
     dispatch(searchMovie(searchQuery))
     navigate('/')
   }
   const handleRemoveSearchQuery = () =>{
     setSearchQuery('')
+    
   }
   const handleSearchByKey =(e) =>{
     if(e.key=='Enter'){
@@ -178,10 +180,10 @@ export default function NavBar() {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
            { isAuthenticated ? <>
 
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton onClick={()=>{colorMode.toggleColorMode()}} size="large" aria-label="show 4 new mails" color="inherit">
             {theme.palette.mode=='dark' ?  <LightModeIcon/> : <NightlightIcon/>}
             </IconButton>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton   size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
