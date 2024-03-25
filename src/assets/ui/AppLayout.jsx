@@ -9,7 +9,7 @@ const AppLayout = () => {
   return (
     <>
          <NavBar></NavBar>
-        <Container>
+        <Container sx={{minHeight:'1000px'}}>
          <Grid container maxWidth={'xl'} sx={{margin:'40px auto'}}>
          <Outlet></Outlet>
          </Grid>
