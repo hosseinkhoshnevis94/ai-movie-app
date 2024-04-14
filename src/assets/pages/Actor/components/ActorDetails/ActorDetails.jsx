@@ -7,9 +7,9 @@ import TextExpander from '../../../../ui/TextExpander/TextExpander';
 const ActorDetails = ({actorData}) => {
     const {name,biography,profile_path,birthday,place_of_birth ,deathday,imdb_id} = actorData
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={4} sx={{paddingTop:'50px'}}>
      <Grid  item xs={3} >
-     {profile_path ? <img className={styles.actorPosterImage} src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt="" /> :
+     {profile_path ?  <img className={styles.actorPosterImage} src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt="" /> :
      <div className={styles.actorNoImagePoster}></div>
      }
       </Grid>

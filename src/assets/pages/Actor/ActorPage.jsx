@@ -5,12 +5,14 @@ import { Grid } from '@mui/material'
 import ActorDetails from './components/ActorDetails/ActorDetails'
 import styles from './styles.module.css'
 import ActorMovies from './components/ActorMovies/ActorMovies'
+import useScrollToTopOnLoad from '../../ui/ScrollToTop/useScrollToTopOnLoad'
 
 const ActorPage = () => {
   const {id} = useParams()
   const {data:actorData,isFetching} =useGetActorQuery(id)
   const {data:actorMovies} = useGetMoviesByActorIdQuery(id)
   const actorMoviesResults = actorMovies?.cast
+  useScrollToTopOnLoad([id],0)
 
 
   if(isFetching) return <div>is loading...</div>
