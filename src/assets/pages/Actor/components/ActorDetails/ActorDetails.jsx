@@ -24,7 +24,7 @@ const ActorDetails = ({actorData}) => {
         {deathday && <Typography variant="body2">{new Date(deathday).toDateString() } </Typography>}     
         </Grid>
       <Grid item>
-        <Typography variant="body1"><TextExpander collapsedNumWords={100}>{biography}</TextExpander></Typography>
+       <Typography variant="body1"><TextExpander collapsedNumWords={100}>{biography}</TextExpander></Typography>
       </Grid>
       <Grid item>
       <Button variant="outlined" target={'_blank'} href={`http://imdb.com/name/${imdb_id}`} startIcon={<TheaterComedyIcon />}>IMDB</Button>

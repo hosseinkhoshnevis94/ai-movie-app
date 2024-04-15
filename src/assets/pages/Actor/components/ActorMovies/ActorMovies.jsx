@@ -25,7 +25,7 @@ const ActorMovies = ({ movies, isFetching, actorName }) => {
         </Typography>
       </Grid>
       {currentMovies.map((movie) => (
-        <Grid item xs={2} key={movie.id}>
+        <Grid item xs={3} key={movie.id}>
           <Movie movie={movie} isFetching={isFetching} />
         </Grid>
       ))}

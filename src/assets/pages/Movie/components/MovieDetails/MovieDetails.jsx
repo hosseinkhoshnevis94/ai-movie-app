@@ -79,7 +79,7 @@ const MovieDetails = ({movie}) => {
            <Link to={`/actor/${cast.id}`}>
           <Box sx={{display:'flex',flexDirection:"column",justifyContent:'center',alignItems:"center"}}>
             <Avatar   sx={{ width: 74, height: 74 }} src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} ></Avatar>
-            <Typography>{cast.name}</Typography>
+            <Typography sx={{textAlign:"center"}}>{cast.name}</Typography>
             </Box>
            </Link>
             )}

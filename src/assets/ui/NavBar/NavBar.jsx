@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
 import { searchMovie } from '../../features/searchSlice';
 import { useColorModeContext } from '../../utils/ToggleDarkMode';
+
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -33,7 +34,7 @@ export default function NavBar() {
   const isMobile = useMediaQuery('(max-width:600px)')
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const isAuthenticated = true
+  const isAuthenticated = false
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const colorMode = useColorModeContext()
@@ -71,6 +72,13 @@ export default function NavBar() {
     setOpenNavBar(prev=>!prev)
   }
 
+  const toggleColorMode = () =>{
+    colorMode.toggleColorMode()
+  }
+   
+  const handleLogin = () =>{
+    
+  }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -147,7 +155,7 @@ export default function NavBar() {
   );
 
   return (
-    <Box sx={{position:'sticky',top:'10px',width:{ xs: '90%', md: '65%' },margin:'auto',zIndex:"999999",}}>
+    <Box sx={{position:'sticky',top:'10px',width:{ xs: '90%', md: '85%' },margin:'auto',zIndex:"999999",}}>
       <AppBar position="static" sx={{backgroundColor:'rgb(207 207 257 / 50%)',backdropFilter:'blur(9px);',borderRadius:'15px'}}>
         <Container maxWidth='xl'  >
         <Toolbar sx={{display:'flex',justifyContent:"space-between",alignItems:"center" , height:'80px',}}>
@@ -180,7 +188,7 @@ export default function NavBar() {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
            { isAuthenticated ? <>
 
-            <IconButton onClick={()=>{colorMode.toggleColorMode()}} size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton onClick={toggleColorMode} size="large" aria-label="show 4 new mails" color="inherit">
             {theme.palette.mode=='dark' ?  <LightModeIcon/> : <NightlightIcon/>}
             </IconButton>
             <IconButton   size="large" aria-label="show 4 new mails" color="inherit">
@@ -210,11 +218,12 @@ export default function NavBar() {
             </IconButton>
             </>
             :
-            <>
+            <Box sx={{display:'flex',gap:'9px'}}>
             <IconButton
               size="large"
               edge="end"
               color="inherit"
+              onClick={toggleColorMode}
               >
               {theme.palette.mode=='dark' ?  <LightModeIcon/> : <NightlightIcon/>}
             </IconButton>
@@ -223,9 +232,9 @@ export default function NavBar() {
               edge="end"
               color="inherit"
               >
-              <LoginIcon></LoginIcon>
+              <LoginIcon onClick={handleLogin} ></LoginIcon>
             </IconButton>
-                </>
+            </Box>
             
             }
             
