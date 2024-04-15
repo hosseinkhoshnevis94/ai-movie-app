@@ -1,8 +1,7 @@
 import { Grid, Pagination, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import Movie from '../../../Home/components/Movie/Movie';
-import useScrollToTopOnLoad from '../../../../ui/ScrollToTop/ScrollToTop';
-import useScrollToTop from '../../../../ui/ScrollToTop/ScrollToTop';
+import useScrollToTop from '../../../../hooks/ScrollToTop';
 
 const ActorMovies = ({ movies, isFetching, actorName }) => {
   const [page, setPage] = useState(1);

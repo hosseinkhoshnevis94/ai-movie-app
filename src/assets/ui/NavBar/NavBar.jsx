@@ -77,7 +77,7 @@ export default function NavBar() {
   }
    
   const handleLogin = () =>{
-    
+
   }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -231,8 +231,9 @@ export default function NavBar() {
               size="large"
               edge="end"
               color="inherit"
+              onClick={handleLogin}
               >
-              <LoginIcon onClick={handleLogin} ></LoginIcon>
+              <LoginIcon></LoginIcon>
             </IconButton>
             </Box>
             

@@ -6,7 +6,7 @@ import { Grid } from '@mui/material'
 import Movie from '../Home/components/Movie/Movie'
 import RecommendedMovies from './components/RecommendedMovies/RecommendedMovies'
 import Spinner from '../../ui/Spinner/Spinner'
-import useScrollToTopOnLoad from '../../ui/ScrollToTop/useScrollToTopOnLoad'
+import useScrollToTopOnLoad from '../../hooks/useScrollToTopOnLoad'
 
 const MoviePage = () => {
   const {id} = useParams()

@@ -7,7 +7,7 @@ import MovieSkeleton from '../../../../ui/MovieSkeleton/MovieSkeleton';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { StarRateTwoTone } from '@mui/icons-material';
-import useScrollToTopOnLoad from '../../../../ui/ScrollToTop/useScrollToTopOnLoad';
+import useScrollToTopOnLoad from '../../../../hooks/useScrollToTopOnLoad';
 
 const MovieList = () => {
   const [page,setPage] = useState(1)
@@ -16,9 +16,7 @@ const MovieList = () => {
   const category = useSelector(state=>state.category.category)
   const {data:movies,error,isFetching} = useGetMoviesQuery({genre,category,searchQuery,page})
   useScrollToTopOnLoad([page,genre,category,searchQuery],0)
-   console.log(searchQuery);
-  
-   
+
   const handleChangePage = (event, value) => {
     setPage(value);
   };
@@ -44,9 +42,6 @@ const MovieList = () => {
  return (
     <>
     <Grid container spacing={{ xs: 1, md: 1 }} sx={{width:'100%',paddingBottom:'20px',paddingX:'15px'}} >
-     {/* {movies.total_results>0 && <Grid item xs={12} >
-      <Typography variant="body2" >{movies.total_results} results</Typography>
-      </Grid>} */}
       {movies?.results?.map((movie, index) => (
         <Grid item key={movie.id} xs={12} sm={4} md={3} >
         <Movie movie={movie} isFetching={isFetching} ></Movie>

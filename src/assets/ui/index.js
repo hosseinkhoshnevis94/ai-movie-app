@@ -1,0 +1,7 @@
+export {default as Footer} from './Footer/Footer'
+export {default as MovieSkeleton} from './MovieSkeleton/MovieSkeleton'
+export {default as NavBar} from './NavBar/NavBar'
+export {default as SideBar} from './SideBar/SideBar'
+export {default as TextExpander} from './TextExpander/TextExpander'
+export {default as Spinner} from './Spinner/Spinner'
+export {default as AppLayout} from './AppLayout/AppLayout'

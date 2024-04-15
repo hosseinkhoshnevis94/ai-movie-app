@@ -5,7 +5,7 @@ import { Grid } from '@mui/material'
 import ActorDetails from './components/ActorDetails/ActorDetails'
 import styles from './styles.module.css'
 import ActorMovies from './components/ActorMovies/ActorMovies'
-import useScrollToTopOnLoad from '../../ui/ScrollToTop/useScrollToTopOnLoad'
+import useScrollToTopOnLoad from '../../hooks/useScrollToTopOnLoad'
 
 const ActorPage = () => {
   const {id} = useParams()
