@@ -4,7 +4,7 @@ export const searchGenreCategorySlice = createSlice({
   name: 'searchGenreCategorySlice',
   initialState: {
     genre: {},
-    categoryName:'',
+    category:'',
     page: 1,
     searchQuery: '',
   },
@@ -12,11 +12,11 @@ export const searchGenreCategorySlice = createSlice({
     selectGenre: (state, action) => {
       state.genre = action.payload;
       state.searchQuery = '';
-      state.categoryName=''
+      state.category=''
       state.page=1
     },
     selectCategory: (state, action) => {
-      state.categoryName = action.payload;
+      state.category = action.payload;
       state.genre = {};
       state.searchQuery = '';
       state.page=1
@@ -24,11 +24,19 @@ export const searchGenreCategorySlice = createSlice({
     searchMovie: (state, action) => {
       state.searchQuery = action.payload;
       state.genreIdOrCategoryName='';
-      state.page =1
+      state.category=''
+      state.genre = {};
+      state.page =1;
     },
+    resetAll:(state,action)=>{
+      state.genre= {},
+      state.category='',
+      state.page= 1,
+      state.searchQuery= ''
+    }
   },
 });
 
-export const { selectGenreOrCategory, searchMovie } = searchGenreCategorySlice.actions;
+export const { selectGenre, selectCategory ,searchMovie,resetAll} = searchGenreCategorySlice.actions;
 
 export default searchGenreCategorySlice.reducer;

@@ -11,9 +11,9 @@ import useScrollToTopOnLoad from '../../../../hooks/useScrollToTopOnLoad';
 
 const MovieList = () => {
   const [page,setPage] = useState(1)
-  const genre = useSelector(state=>state.genre.genre)
-  const searchQuery = useSelector(state=>state.search.query)
-  const category = useSelector(state=>state.category.category)
+  const genre = useSelector(state=>state.searchGenreCategorySlice.genre)
+  const searchQuery = useSelector(state=>state.searchGenreCategorySlice.searchQuery)
+  const category = useSelector(state=>state.searchGenreCategorySlice.category)
   const {data:movies,error,isFetching} = useGetMoviesQuery({genre,category,searchQuery,page})
   useScrollToTopOnLoad([page,genre,category,searchQuery],0)
 

@@ -22,10 +22,10 @@ import { Container, useMediaQuery } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
-import { searchMovie } from '../../features/searchSlice';
 import { useColorModeContext } from '../../utils/ToggleDarkMode';
 import { fetchToken,movieApi,createSessionId } from '../../utils/fetchToken';
 import {setUser} from '../../features/auth'
+import { resetAll, searchMovie} from '../../features/searchGenreCategorySlice';
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -36,7 +36,7 @@ export default function NavBar() {
   const isMobile = useMediaQuery('(max-width:600px)')
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const {isAuthenticated,user,sessionId} = useSelector(state=>state.user)
+  const {isAuthenticated,user} = useSelector(state=>state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const colorMode = useColorModeContext()
@@ -62,15 +62,13 @@ export default function NavBar() {
   },[token])
 
 
-
-
-
   const handleSearch = () =>{
     dispatch(searchMovie(searchQuery))
     navigate('/')
   }
   const handleRemoveSearchQuery = () =>{
     setSearchQuery('')
+    dispatch(resetAll())
     
   }
   const handleSearchByKey =(e) =>{
@@ -110,6 +108,11 @@ export default function NavBar() {
   const handleLogout = () =>{
     localStorage.clear()
     navigate(0)
+  }
+  const handleClickLogo =() =>{
+    dispatch(resetAll())
+    setSearchQuery('')
+    navigate('/')
   }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -202,12 +205,12 @@ export default function NavBar() {
           >
             <MenuIcon onClick={toggleDrawer} />
           </IconButton>}
-          <Link to={'/'}>
-          <Box sx={{justifyContent:'center',alignItems:'end',gap:2 ,display: { xs: 'none', md: 'flex' }}} >
+          
+          <Box onClick={handleClickLogo} sx={{justifyContent:'center',alignItems:'end',cursor:'pointer',gap:2 ,display: { xs: 'none', md: 'flex' }}} >
           <LogoImage src="/logo.png" alt="movie"   />
           <Typography variant='caption' color={'initial'} fontFamily={'Chilanka'}>AI Powered !</Typography> 
             </Box>
-          </Link>
+
           <Search >
               <SearchIcon onClick={handleSearch} sx={{height:'100%',cursor:"pointer"}} /> 
             <StyledInputBase

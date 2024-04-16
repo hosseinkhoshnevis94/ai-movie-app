@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react'
 import { useGetFavoriteMoviesQuery,  } from '../../services/tmdb'
 import { Grid, Typography } from '@mui/material'
-import Spinner from '../../ui/Spinner/Spinner'
-import useScrollToTopOnLoad from '../../hooks/useScrollToTopOnLoad'
-import RecommendedMovies from '../Movie/components/RecommendedMovies/RecommendedMovies'
 import { useSelector } from 'react-redux'
 import Movie from '../Home/components/Movie/Movie'
 import Divider from '@mui/material/Divider';

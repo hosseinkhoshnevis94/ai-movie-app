@@ -3,6 +3,7 @@ import {tmdbApi} from './assets/services/tmdb'
 import genreReducer from './assets/features/genreSlice'
 import categoryReducer from './assets/features/categorySlice'
 import searchReducer from './assets/features/searchSlice'
+import searchGenreCategorySliceReducer from './assets/features/searchGenreCategorySlice'
 import userReducer from './assets/features/auth'
 
 export default configureStore({
@@ -11,7 +12,8 @@ export default configureStore({
         genre: genreReducer,
         category: categoryReducer,
         search:searchReducer,
-        user:userReducer
+        user:userReducer,
+        searchGenreCategorySlice:searchGenreCategorySliceReducer
 
     },
     middleware: (getDefaultMiddleware) =>
