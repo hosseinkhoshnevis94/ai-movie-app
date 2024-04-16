@@ -1,10 +1,11 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 
 const tmdbApiKey =import.meta.env.VITE_TMDB_MOVIE_API_KEY
+const baseUrl =import.meta.env.VITE_TMDB_MOVIE_BASEURL
 
 export const  tmdbApi = createApi({
     reducerPath:'tmdbApi',
-    baseQuery:fetchBaseQuery({baseUrl:'https://api.themoviedb.org/3'}),
+    baseQuery:fetchBaseQuery({baseUrl:baseUrl}),
     endpoints:(builder)=>({
         //get moviesby [type]
         getMovies: builder.query({
@@ -40,7 +41,7 @@ export const  tmdbApi = createApi({
              return `/genre/movie/list?api_key=${tmdbApiKey}`
         },
     }),
-    //get movie
+    //get movie by id
     getMovie : builder.query({
         query: (movieId) =>{
             return `/movie/${movieId}?append_to_response=videos,credits&api_key=${tmdbApiKey}`
@@ -51,6 +52,12 @@ export const  tmdbApi = createApi({
      query:({movieId,list}) =>{
         return `/movie/${movieId}/${list}?api_key=${tmdbApiKey}`
      }
+    }),
+    //get user's favorite movies
+    getFavoriteMovies : builder.query({
+        query:({listName,accountId,sessionId,page}) =>{
+            return `/account/${accountId}/${listName}?api_key=${tmdbApiKey}&session_id=${sessionId}&page=${page}`
+        }
     }),
     // get actor details
     getActor : builder.query({
@@ -72,6 +79,7 @@ export const {
     useGetMoviesQuery,
     useGetGenresQuery,
     useGetRecommendationMoviesQuery,
+    useGetFavoriteMoviesQuery,
     useGetActorQuery,
     useGetMoviesByActorIdQuery
 
