@@ -90,7 +90,7 @@ export default function NavBar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    navigate(`profile/:${user.id}`)
+    navigate(`profile/${user.id}`)
   };
 
   const handleMobileMenuOpen = (event) => {
