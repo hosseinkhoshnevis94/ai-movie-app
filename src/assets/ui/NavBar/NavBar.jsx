@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -24,6 +24,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
 import { searchMovie } from '../../features/searchSlice';
 import { useColorModeContext } from '../../utils/ToggleDarkMode';
+import { fetchToken,movieApi,createSessionId } from '../../utils/fetchToken';
+import {setUser} from '../../features/auth'
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -34,10 +36,35 @@ export default function NavBar() {
   const isMobile = useMediaQuery('(max-width:600px)')
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const isAuthenticated = false
+  const {isAuthenticated,user,sessionId} = useSelector(state=>state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const colorMode = useColorModeContext()
+  const token = localStorage.getItem('request_token')
+  const sessionIdFromLocalStorage = localStorage.getItem('session_id')
+
+  useEffect(()=>{
+    const loginUser = async () =>{
+      if(token){
+        if(sessionIdFromLocalStorage){
+         const {data:userData} = await movieApi.get(`/account?session_id=${sessionIdFromLocalStorage}`)
+         dispatch(setUser(userData))
+
+        }else{
+           const session_id = await createSessionId()
+           const {data:userData} = await movieApi.get(`/account?session_id=${session_id}`)
+           dispatch(setUser(userData))
+
+        }
+      }
+    }
+    loginUser()
+  },[token])
+
+
+
+
+
   const handleSearch = () =>{
     dispatch(searchMovie(searchQuery))
     navigate('/')
@@ -63,6 +90,7 @@ export default function NavBar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+    navigate(`profile/:${user.id}`)
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -77,7 +105,11 @@ export default function NavBar() {
   }
    
   const handleLogin = () =>{
-
+    fetchToken()
+  }
+  const handleLogout = () =>{
+    localStorage.clear()
+    navigate(0)
   }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -93,12 +125,13 @@ export default function NavBar() {
         vertical: 'top',
         horizontal: 'right',
       }}
-      sx={{top:"10px"}}
+      sx={{top:"10px",zIndex:'999999999999'}}
+
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -116,10 +149,11 @@ export default function NavBar() {
         vertical: 'top',
         horizontal: 'right',
       }}
+      sx={{zIndex:'999999999999'}}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem >
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
@@ -171,7 +205,7 @@ export default function NavBar() {
           <Link to={'/'}>
           <Box sx={{justifyContent:'center',alignItems:'end',gap:2 ,display: { xs: 'none', md: 'flex' }}} >
           <LogoImage src="/logo.png" alt="movie"   />
-          <Typography variant='caption' fontFamily={'Chilanka'}>AI Powered !</Typography> 
+          <Typography variant='caption' color={'initial'} fontFamily={'Chilanka'}>AI Powered !</Typography> 
             </Box>
           </Link>
           <Search >
@@ -188,10 +222,10 @@ export default function NavBar() {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
            { isAuthenticated ? <>
 
-            <IconButton onClick={toggleColorMode} size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton onClick={toggleColorMode} size="large" aria-label="show 4 new mails" >
             {theme.palette.mode=='dark' ?  <LightModeIcon/> : <NightlightIcon/>}
             </IconButton>
-            <IconButton   size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton   size="large" aria-label="show 4 new mails" >
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
@@ -199,8 +233,7 @@ export default function NavBar() {
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
-              color="inherit"
-              >
+                            >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>
@@ -212,7 +245,7 @@ export default function NavBar() {
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              color="inherit"
+              
               >
               <AccountCircle />
             </IconButton>
@@ -222,7 +255,7 @@ export default function NavBar() {
             <IconButton
               size="large"
               edge="end"
-              color="inherit"
+              
               onClick={toggleColorMode}
               >
               {theme.palette.mode=='dark' ?  <LightModeIcon/> : <NightlightIcon/>}
@@ -230,10 +263,9 @@ export default function NavBar() {
             <IconButton
               size="large"
               edge="end"
-              color="inherit"
               onClick={handleLogin}
               >
-              <LoginIcon></LoginIcon>
+              <LoginIcon ></LoginIcon>
             </IconButton>
             </Box>
             
