@@ -6,9 +6,6 @@ import userReducer from './assets/features/auth'
 export default configureStore({
     reducer:{
         [tmdbApi.reducerPath]:tmdbApi.reducer,
-        genre: genreReducer,
-        category: categoryReducer,
-        search:searchReducer,
         user:userReducer,
         searchGenreCategorySlice:searchGenreCategorySliceReducer
 
