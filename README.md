@@ -1,6 +1,20 @@
+Certainly! Here's the complete README.md file with the added links for each dependency:
+
+```markdown
 # AI-Movie App
 
 AI-Movie is an innovative movie application that leverages AI technology to revolutionize the way users interact with movies. This app provides a comprehensive platform for users to search for movies, explore detailed information about them, add favorites, and even control the app using voice commands with Alan AI integration.
+
+## Tech Stack
+
+- **[React](https://reactjs.org/)**: Frontend library for building user interfaces.
+- **[Redux Toolkit](https://redux-toolkit.js.org/)**: State management library for managing application state.
+- **[React Router DOM](https://reactrouter.com/)**: Library for routing in React applications.
+- **[Axios](https://axios-http.com/)**: Promise-based HTTP client for making HTTP requests.
+- **[Styled Components](https://styled-components.com/)**: Library for styling React components with CSS-in-JS.
+- **[Emotion](https://emotion.sh/)**: Library for styling React components with CSS-in-JS.
+- **[Material-UI](https://mui.com/)**: React UI framework for building responsive and customizable UI components.
+- **[Alan AI SDK](https://alan.app/)**: Library for integrating voice commands and AI capabilities into web applications.
 
 ## Key Features
 
@@ -37,10 +51,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgements
 
-- [Alan AI](https://alan.app/) for voice command integration.
-- [TMDB API](https://www.themoviedb.org/documentation/api) for movie data.
-- Special thanks to [JS Mastery](https://jsmastery.com/) for their invaluable resources and tutorials.
+- **[Alan AI](https://alan.app/)**: for voice command integration.
+- **[TMDB API](https://www.themoviedb.org/documentation/api)**: for movie data.
+- Special thanks to **[JS Mastery](https://jsmastery.com/)** for their invaluable resources and tutorials.
 
 ## Get in Touch
 
 If you have any questions, suggestions, or feedback, feel free to reach out to us at [hossein.khoshnevis77@gmail.com](mailto:hossein.khoshnevis77@gmail.com).
+```
+
+Feel free to use and modify it according to your needs!
