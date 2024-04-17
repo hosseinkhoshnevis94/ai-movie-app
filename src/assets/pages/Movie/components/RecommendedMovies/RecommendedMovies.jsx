@@ -9,7 +9,7 @@ const RecommendedMovies = ({movies,isFetching}) => {
       <Typography gutterBottom variant="h6" component="h4">Recommended movies:</Typography>
       </Grid>
        {movies.map((movie,i)=>
-      <Grid item xs={3}>
+      <Grid  key={movie.id} item xs={3}>
      <Movie key={movie.id} movie={movie} isFetching={isFetching} ></Movie>
       </Grid>
      ) }

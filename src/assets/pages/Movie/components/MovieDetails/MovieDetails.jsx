@@ -83,8 +83,8 @@ const MovieDetails = ({movie}) => {
           </Grid>
           <Grid  item xs={8}>
           <Typography sx={{fontSize:"20px"}} variant="body1" component={'span'} >Genre: </Typography>
-          {genres.map((genre,index)=> 
-           <Typography component={'span'} >{genre.name},</Typography>
+          {genres.map((genre)=> 
+           <Typography key={genre.name} component={'span'} >{genre.name},</Typography>
            )}
           </Grid>
           <Grid item xs={2}>
@@ -102,7 +102,7 @@ const MovieDetails = ({movie}) => {
           <Typography sx={{fontSize:"20px"}} variant="body1" component={'p'} >Top casts: </Typography>
           <Box sx={{display:'flex',justifyContent:'flex-start',gap:'25px',alignItems:"center",marginTop:'10px'}}>
            {credits.cast.slice(0,6).map((cast,index)=> 
-           <Link to={`/actor/${cast.id}`}>
+           <Link key={cast.id} to={`/actor/${cast.id}`}>
           <Box sx={{display:'flex',flexDirection:"column",justifyContent:'center',alignItems:"center"}}>
             <Avatar   sx={{ width: 74, height: 74,}} src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} ></Avatar>
             <Typography sx={{textAlign:"center"}}>{cast.name}</Typography>

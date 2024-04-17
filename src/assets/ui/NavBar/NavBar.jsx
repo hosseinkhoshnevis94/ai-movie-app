@@ -24,8 +24,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
 import { useColorModeContext } from '../../utils/ToggleDarkMode';
 import { fetchToken,movieApi,createSessionId } from '../../utils/fetchToken';
-import {setUser} from '../../features/auth'
-import { resetAll, searchMovie} from '../../features/searchGenreCategorySlice';
+import {setUser} from '../../redux/auth'
+import { resetAll, searchMovie} from '../../redux/searchGenreCategorySlice';
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);

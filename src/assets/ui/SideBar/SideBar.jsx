@@ -6,7 +6,7 @@ import genresIcons from '../../../../public/genres/index'
 import Spinner from '../Spinner/Spinner';
 import SidebarButton from './SidebarButton';
 import sideBarMenus from './sideBarMenus.js'
-import { selectCategory ,selectGenre} from '../../features/searchGenreCategorySlice';
+import { selectCategory ,selectGenre} from '../../redux/searchGenreCategorySlice';
 
 const SideBar = () => {
   const dispatch = useDispatch()

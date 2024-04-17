@@ -4,7 +4,7 @@ import { useColorModeContext } from '../../utils/ToggleDarkMode';
 import { fetchToken } from '../../utils/fetchToken';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { selectCategory ,selectGenre,searchMovie} from '../../features/searchGenreCategorySlice';
+import { selectCategory ,selectGenre,searchMovie} from '../../redux/searchGenreCategorySlice';
 
 
 const useAlan = () =>{
