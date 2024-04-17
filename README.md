@@ -1,6 +1,3 @@
-Certainly! Here's the complete README.md file with the added links for each dependency:
-
-```markdown
 # AI-Movie App
 
 AI-Movie is an innovative movie application that leverages AI technology to revolutionize the way users interact with movies. This app provides a comprehensive platform for users to search for movies, explore detailed information about them, add favorites, and even control the app using voice commands with Alan AI integration.
@@ -58,6 +55,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Get in Touch
 
 If you have any questions, suggestions, or feedback, feel free to reach out to us at [hossein.khoshnevis77@gmail.com](mailto:hossein.khoshnevis77@gmail.com).
-```
-
-Feel free to use and modify it according to your needs!
