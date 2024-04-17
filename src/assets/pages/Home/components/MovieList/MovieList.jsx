@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid';
 import Movie from '../Movie/Movie';
 import {  useGetMoviesQuery } from '../../../../services/tmdb';
-import { Box, Pagination, Typography } from '@mui/material';
+import {  Pagination } from '@mui/material';
 import MovieSkeleton from '../../../../ui/MovieSkeleton/MovieSkeleton';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { StarRateTwoTone } from '@mui/icons-material';
+
 import useScrollToTopOnLoad from '../../../../hooks/useScrollToTopOnLoad';
 
 const MovieList = () => {

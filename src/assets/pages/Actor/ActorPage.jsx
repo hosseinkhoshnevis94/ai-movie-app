@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useGetActorQuery, useGetMoviesByActorIdQuery, useGetRecommendationMoviesQuery } from '../../services/tmdb'
+import { useGetActorQuery, useGetMoviesByActorIdQuery } from '../../services/tmdb'
 import { Grid } from '@mui/material'
 import ActorDetails from './components/ActorDetails/ActorDetails'
 import styles from './styles.module.css'

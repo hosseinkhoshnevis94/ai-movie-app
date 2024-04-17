@@ -1,16 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useGetGenresQuery } from '../../../../services/tmdb'
 import { Avatar, Box } from '@mui/material'
 import genresIcons from '../../../../../../public/genres'
-import { Link } from 'react-router-dom'
-import { useDispatch,useSelector } from 'react-redux'
-import { Cursor } from 'mongoose'
-import { selectGenre } from '../../../../features/genreSlice'
+import { useDispatch } from 'react-redux'
 
 
 const GenreList = () => {
   const dispatch = useDispatch()
-  const {data,isLoading} = useGetGenresQuery()
+  const {data} = useGetGenresQuery()
 
   return (
     <Box sx={{display:'flex',justifyContent:'flex-start',alignItems:"center",padding:'10px 15px',flexWrap:'wrap',borderRadius:'16px',gap:'6px',backgroundColor:'#D9AFD9',backgroundImage:'linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)',}}>

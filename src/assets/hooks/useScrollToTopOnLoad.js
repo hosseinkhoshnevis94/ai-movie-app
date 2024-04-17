@@ -5,17 +5,17 @@ function useScrollToTopOnLoad(deps,top) {
       const handleScrollToTop = () => {
         window.scrollTo({
           top,
-          behavior: 'smooth' // Optional: smooth scrolling animation
+          behavior: 'smooth' 
         });
       };
   
-      // Trigger scroll to top when component mounts
+      
       handleScrollToTop();
   
-      // Cleanup function (no event listener needed)
+      
     }, [...deps]);
   
-    // No need to return anything from this hook
+    
   }
   
   export default useScrollToTopOnLoad

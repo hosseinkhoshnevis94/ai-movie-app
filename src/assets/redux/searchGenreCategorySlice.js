@@ -28,7 +28,7 @@ export const searchGenreCategorySlice = createSlice({
       state.genre = {};
       state.page =1;
     },
-    resetAll:(state,action)=>{
+    resetAll:(state)=>{
       state.genre= {},
       state.category='',
       state.page= 1,
