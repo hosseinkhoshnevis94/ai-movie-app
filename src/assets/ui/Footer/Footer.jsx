@@ -4,7 +4,7 @@ import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 const Footer = () => {
   return (
     <Box position="static"  sx={{marginTop:'150px',backgroundColor:'#00DBDE00',backgroundImage:'linear-gradient(90deg, #00dbde61 0%, #fc00ff6e 100%)',color:'black'}}  >
-      <Toolbar sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',height:'130px',gap:'5px'}}>
+      <Toolbar sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',height:'150px',gap:'5px'}}>
         <Typography variant="body1" color="inherit">
           © {new Date().getFullYear()} Ai powered movie application. All rights reserved.
         </Typography>

@@ -7,7 +7,7 @@ export default function SidebarButton({ text, onClick, currentCategory,slug }) {
   return (
     <Button
       onClick={onClick}
-      variant='body'
+      
       sx={{
         width: "150px",
         display: 'flex',
@@ -21,9 +21,12 @@ export default function SidebarButton({ text, onClick, currentCategory,slug }) {
         borderRadius: '10px',
         transform: `${isActive && 'translate(10px)'}`,
         backgroundImage: `${isActive && "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)"} `,
+        color:`${isActive && "black"} `,
         '&:hover': {
           backgroundColor: '#FBAB7E',
-          backgroundImage: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)'
+          backgroundImage: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)',
+          color:"black",
+          
         }
       }}
     >

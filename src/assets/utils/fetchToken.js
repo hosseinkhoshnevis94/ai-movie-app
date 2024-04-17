@@ -14,7 +14,6 @@ export const movieApi = axios.create({
 export const fetchToken = async () =>{
     try{
         const {data} = await movieApi.get(`/authentication/token/new`)
-        console.log(data);
         const token = data.request_token
         if(data.success===true){
             localStorage.setItem('request_token',token)
