@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { selectCategory ,selectGenre,searchMovie} from '../../redux/searchGenreCategorySlice';
 
+const alanKey =import.meta.env.VITE_ALAN_KEY
 
 const useAlan = () =>{
 const {setMode } = useColorModeContext()
@@ -13,7 +14,7 @@ const navigate = useNavigate()
 const dispatch = useDispatch()
     useEffect(() => {
         alanBtn({
-            key: '86ca283eefe6391065374787d6f1c9512e956eca572e1d8b807a3e2338fdd0dc/stage',
+            key: alanKey,
             onCommand: ({command,mode,genres,genreOrCategory,searchQuery}) => {
               if (command === 'changeMode') {
                 if(mode==='light'){
