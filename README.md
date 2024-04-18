@@ -21,6 +21,7 @@ AI-Movie is an innovative movie application that leverages AI technology to revo
 - **Favorite Movies**: Create a personalized list of favorite movies and access them anytime.
 - **Profile Page**: Keep track of favorite movies, recently watched movies, and receive recommendations based on viewing history.
 - **Voice Commands with Alan AI**: Navigate the app, search for movies, and perform actions using voice commands.
+  - Commands: `hi`, `hello`, `what does this app do?`, `what do you do?`, `what can you do?`, `make it dark`, `dark mode`, `dark`, `switch to dark mode`, `make it light`, `light mode`, `light`, `switch to light mode`, `login`, `log in`, `logout`, `log out`, `home`, `home page`, `go to $(GENRE |top rated|popular|upcoming)`, `GENRE |top rated|popular|upcoming) movies`, `search for something)`.
 - **Dark and Light Mode**: Customize the app's appearance with dark and light mode options.
 
 ## Usage
